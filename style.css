@@ -1,0 +1,95 @@
+/* ==========================================================
+   1. RESET & ĐỊNH DẠNG CHUNG
+   Đặt font chữ cố định, reset margin/padding cho ul, li
+   ========================================================== */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #f4f6f8;
+  padding: 30px;
+}
+
+/* Vùng chứa menu */
+#menu {
+  width: 200px;
+}
+
+#menu ul {
+  margin: 0;
+  padding: 0;
+  list-style: none; /* Bỏ ký hiệu bullet */
+}
+
+/* ==========================================================
+   2. ĐỊNH DẠNG PHẦN TỬ DANH SÁCH (li)
+   ========================================================== */
+#menu li {
+  list-style: none; /* Bỏ bullet */
+  position: relative; /* Cho phép danh sách con định vị theo li cha */
+  width: 100px; /* Chiều rộng cố định */
+  height: 30px; /* Chiều cao cố định */
+  padding: 0 20px; /* Lề trái/phải cho nội dung */
+  background-color: black; /* Nền đen */
+  line-height: 30px; /* Căn giữa chữ theo chiều dọc */
+  cursor: pointer; /* Đổi con trỏ thành bàn tay */
+}
+
+/* ==========================================================
+   3. ĐỊNH DẠNG LIÊN KẾT TRONG MENU (a)
+   ========================================================== */
+#menu li a {
+  text-decoration: none; /* Bỏ gạch chân */
+  color: white; /* Chữ trắng */
+  display: block; /* Cho phép click toàn bộ vùng */
+}
+
+/* ==========================================================
+   4. HIỆU ỨNG HOVER CHO MỤC MENU
+   Khi đưa chuột vào li → đổi màu nền
+   ========================================================== */
+#menu li:hover {
+  background-color: #3498db;
+}
+
+/* ==========================================================
+   5. DANH SÁCH CON (menu dropdown)
+   Mặc định ẩn, hiện khi hover vào li cha
+   ========================================================== */
+#menu li ul {
+  position: absolute; /* Định vị tuyệt đối so với li cha */
+  top: 0; /* Căn ngang hàng với li cha */
+  left: 160px; /* Đặt sang bên phải li cha (100 + 20*2 + 20) */
+  visibility: hidden; /* Ẩn menu con */
+}
+
+/* ==========================================================
+   6. HIỆN MENU CON KHI HOVER VÀO LI CHA
+   ========================================================== */
+#menu li:hover > ul {
+  visibility: visible;
+}
+
+/* ==========================================================
+   7. TÙY CHỈNH THÊM CHO ĐẸP (không bắt buộc)
+   ========================================================== */
+/* Đổ bóng cho menu con để nổi bật */
+#menu li ul li {
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  border-bottom: 1px solid #555;
+}
+
+/* Hiệu ứng chuyển màu mượt */
+#menu li {
+  transition: background-color 0.25s ease;
+}
+
+/* Mũi tên nhỏ chỉ mục có menu con */
+#menu li:has(> ul) > a::after {
+  content: " ▶";
+  float: right;
+  font-size: 11px;
+}
